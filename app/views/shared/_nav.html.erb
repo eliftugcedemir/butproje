@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><img src="https://i.hizliresim.com/lOz5YX.png" class="img-logo" alt="Muhabbetkuşu"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li ><a href="/posts">Ana Sayfa</a></li>
+      <li><a href="/posts/new">Yükle</a></li>
+      <li><a href="/welcome/uploads">Yüklediklerin</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <strong>Merhaba <%= current_user.name %></strong>
+            <em><%=image_tag current_user.image.url(:thumb) ,:class=>'img-circle' %> </em>
+            <%= link_to 'Hesabım', edit_user_registration_path, :class=>'btn active btn-primary btn-primary'%> |
+            <%= link_to 'Çıkış Yap ', destroy_user_session_path, method: :delete, :class=>'btn active btn-primary btn-danger'%>
+            <% else %>
+            <%= link_to "Yeni Hesap", new_user_registration_path, :class=>'btn active btn-primary btn-success' %> |
+            <%= link_to "Giriş Yap", new_user_session_path, :class=>'btn btn-primary btn-info'%>
+          <%end%>
+              
+    </ul>
+  </div>
+</nav>
+  
